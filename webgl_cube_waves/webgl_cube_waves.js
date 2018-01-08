@@ -23,20 +23,19 @@ var slider_w_rate;
 function set_pos() {
     let pos = canvas.position();
 
-    slider_angle_rate.position(pos.x+145, pos.y+10-5);
-    slider_offset_rate.position(pos.x+145, pos.y+30-5);
-    slider_w_rate.position(pos.x+145, pos.y+50-5);
+    slider_angle_rate.position(pos.x+160, pos.y+10-5);
+    slider_offset_rate.position(pos.x+160, pos.y+30-5);
+    slider_w_rate.position(pos.x+160, pos.y+50-5);
 }
 
 function setup() {
     canvas = createCanvas(500, 500);
 
     slider_angle_rate = createSlider(10, 200, 100);
-
     slider_offset_rate = createSlider(10, 5000, 200);
     slider_w_rate = createSlider(3, 100, 20);
-    slider_angle_rate.style('width', '250px');
 
+    slider_angle_rate.style('width', '250px');
     slider_offset_rate.style('width', '250px');
     slider_w_rate.style('width', '250px');
 
@@ -46,11 +45,11 @@ function setup() {
 }
 
 function draw() {
-    set_pos();
-
     background(0);
     translate(0, 0);
     rectMode(CORNER);
+
+    set_pos();
 
     let offset_rate = slider_offset_rate.value() / 1000;
     let angle_rate = slider_angle_rate.value() / 1000;
