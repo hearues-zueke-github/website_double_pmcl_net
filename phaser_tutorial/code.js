@@ -44,7 +44,7 @@ var platformPositions = [[12, 16, 8],
 
 var platforms;
 function create () {
-    changeRatio();
+    changeRatio(game.canvas);
 
     keyA = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     keyS = game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

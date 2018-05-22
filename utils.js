@@ -9,19 +9,24 @@ String.prototype.format = function()
     return content;
 };
 
-function changeRatio() {
-    var width = game.canvas.width;
-    var height = game.canvas.height;
+function changeRatio(canv) {
+    var width = canv.width;
+    var height = canv.height;
     var innerWidth = window.innerWidth;
     var innerHeight = window.innerHeight;
 
     if (height / width < innerHeight / innerWidth) {
-        game.canvas.style.width = "100%";
-        game.canvas.style.height = "";
+        canv.style.width = "100%";
+        canv.style.height = "";
     } else {
-        game.canvas.style.width = "";
-        game.canvas.style.height = "100%";
+        canv.style.width = "";
+        canv.style.height = "100%";
     }
+}
+
+function changeCanvasSize(canv) {
+    canv.width = window.innerWidth;
+    canv.height = window.innerHeight;
 }
 
 function doesFileExist(urlToFile) {
