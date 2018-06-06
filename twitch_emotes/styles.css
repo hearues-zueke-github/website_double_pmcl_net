@@ -1,0 +1,18 @@
+#cssTable td 
+{
+  text-align: center; 
+  vertical-align: middle;
+  margin: auto;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width; 100%;
+}
+
+/*.myTableStyle
+{
+  position:absolute;
+  top:50%;
+  left:50%; 
+}*/
