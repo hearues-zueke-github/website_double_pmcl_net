@@ -1,3 +1,7 @@
+body {
+  background-color: #bad0d8
+}
+
 #cssTable td 
 {
   text-align: center; 
@@ -9,10 +13,3 @@
 
   width; 100%;
 }
-
-/*.myTableStyle
-{
-  position:absolute;
-  top:50%;
-  left:50%; 
-}*/
