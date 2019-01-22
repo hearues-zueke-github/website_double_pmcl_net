@@ -11,6 +11,9 @@
   },
   "private": true,
   "dependencies": {
+    "webpack-dev-server": ">=3.1.11",
+    "adm-zip": ">=0.4.11",
+    "hoek": ">=4.2.1",
     "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",

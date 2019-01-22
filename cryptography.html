@@ -1,23 +1,41 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="UTF-8" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <td><a href="index.html">Start Page</a></td>
-    <script type="text/javascript" src="script.js"></script>
+    
+    <div id="nav_links"></div>
 
-    <title>Crypthography</title>
+    <link rel="icon" type="image/x-icon" href="imag/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="imag/favicon.ico" />
+    <meta name="keywords" content="This is a page about math stuff, programming, and a lot of other things" />
+    <meta name="Description" content="Some cool stuff about math, programming and so on." />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <title>double-pmcl.net - Crypthography</title>
   </head>
   
   <body>
-
     <h1>Crypthography (my personal favourite section)</h1>
     <p>Here I will personally explain a crypto algorithm, what I am doing right now.</p>
     <p>I will also give you my code for have a look.</p>
-
   </body>
 
   <footer>
-    <div id="table_footer"></div>
+    <table style="width:80%">
+      <tr>
+        <td><div id="footer_links"></div></td>
+        <td><div id="site_viewer_counter"></div></td>
+      </tr>
+    </table>
   </footer>
+
+  <script type="text/javascript">
+    $(function(){
+      $("#nav_links").load("nav_links.html");
+      $("#footer_links").load("footer_links.html");
+      $("#site_viewer_counter").load("site_viewer_counter.html"); 
+    });
+  </script>
 </html>
