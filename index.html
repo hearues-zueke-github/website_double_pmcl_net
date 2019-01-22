@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
 
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
     <div id="nav_links"></div>
 
     <link rel="icon" type="image/x-icon" href="imag/favicon.ico" />
@@ -14,30 +16,29 @@
     
     <title>double-pmcl.net - My first Page</title>
   </head>
+  <script type="text/javascript">
+    $(function(){
+      $("#nav_links").load("nav_links.html");
+    });
+  </script>
   
   <body>
     <h1>Welcome to my homepage</h1>
     <p>This is my my first homepage, and my nickname is double-pmcl (as you can suggest ^^).</p>
-    <figure>
-    <img src="imag/test123.png" alt="A testing image ^^" style="width:128px;height:128px;">
-    <figcaption><small>This will be my logo for this website</small></figcaption>
-    </figure>
+    <div class="container_center" style="margin-left:auto;margin-right:auto;">
+      <figure>
+        <img src="imag/test123.png" alt="A testing image ^^" style="width:128px;height:128px;">
+        <figcaption><small>This will be my logo for this website</small></figcaption>
+      </figure>
+    </div>
   </body>
 
   <footer>
-    <table style="width:80%">
-      <tr>
-        <td><div id="footer_links"></div></td>
-        <td><div id="site_viewer_counter"></div></td>
-      </tr>
-    </table>
+    <div id="table_footer"></div>
   </footer>
-
   <script type="text/javascript">
     $(function(){
-      $("#nav_links").load("nav_links.html");
-      $("#footer_links").load("footer_links.html");
-      $("#site_viewer_counter").load("site_viewer_counter.html"); 
+      $("#table_footer").load("table_footer.html"); 
     });
   </script>
 </html>

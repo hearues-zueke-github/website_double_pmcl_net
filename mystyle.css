@@ -1,0 +1,13 @@
+body {
+    background-color: #93F5A7;
+}
+
+hr.footer_begin {
+  border: 3px solid #22DD44;
+  border-radius: 5px;
+}
+
+.container_center {
+  display: flex;
+  align-items: center;
+}
