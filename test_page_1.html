@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <div id="nav_links">
+      <div id="nav_bar">
+      </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+    <link rel="icon" type="image/x-icon" href="imag/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="imag/favicon.ico" />
+    <meta name="keywords" content="This is a page about math stuff, programming, and a lot of other things" />
+    <meta name="Description" content="Some cool stuff about math, programming and so on." />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <title>double-pmcl.net - Math Stuff</title>
+  </head>
+  <script type="text/javascript">
+    $(function(){
+      $.get("nav_links.html", function(data){
+        $("#nav_links").prepend(data);
+      });
+    });
+  </script>
+  
+  <body>
+    <p>Try this buttons!</p>
+
+    <script type="text/javascript">
+
+    var loadContent1 = function(){
+      $(function(){
+        $("#site_content").load("footer_links.html"); 
+      });
+    };
+    var loadContent2 = function(){
+      $(function(){
+        $("#site_content").load("site_viewer_counter.html");
+      });
+    };
+    </script>
+
+    <button onclick="loadContent1();">Load footer_links.html</button>
+    <button onclick="loadContent2();">Load site_viewer_counter.html</button>
+    
+    <div id="site_content"></div>
+  </body>
+
+  <footer>
+    <div id="table_footer"></div>
+  </footer>
+  <script type="text/javascript">
+    $(function(){
+      $("#table_footer").load("table_footer.html");
+    });
+
+    var $nav_bar = $("#nav_bar");
+    // $nav_bar.append("<a href=\"javascript:;\">Go Nowhere!</a>");
+    $nav_bar.append("<button onclick=\"loadContent1();\">Load footer_links.html</button>");
+    console.log("$nav_bar:");
+    console.log($nav_bar);
+  </script>
+</html>

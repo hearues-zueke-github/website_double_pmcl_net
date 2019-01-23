@@ -12,6 +12,7 @@ folders_dict = {
             "footer_links.html",
             "site_viewer_counter.html",
             "table_footer.html",
+            "test_page_1.html",
         ]
     },
     "startbootstrap_clean_blog_gh_pages": {

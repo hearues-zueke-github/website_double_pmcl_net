@@ -36,8 +36,8 @@ if __name__ == "__main__":
 
     put_commands_whole = ""
 
-    # put_commands_whole += get_next_put_commands(folders_dict["root_folder"])
-    put_commands_whole += get_next_put_commands(folders_dict["startbootstrap_clean_blog_gh_pages"])
+    put_commands_whole += get_next_put_commands(folders_dict["root_folder"])
+    # put_commands_whole += get_next_put_commands(folders_dict["startbootstrap_clean_blog_gh_pages"])
 
     ftp_command = "lftp -e \"{put_commands_whole}bye\" -u {usr},{pwd} {hst_adr}".format(
         put_commands_whole=put_commands_whole,
