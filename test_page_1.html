@@ -49,20 +49,16 @@
     <button onclick="loadContent2();">Load site_viewer_counter.html</button>
     
     <div id="site_content"></div>
+    
+    <script type="text/javascript">
+      var $nav_bar = $("#nav_bar");
+      $nav_bar.append("<button onclick=\"loadContent1();\">Load footer_links.html</button>");
+      console.log("$nav_bar:");
+      console.log($nav_bar);
+    </script>
   </body>
 
   <footer>
     <div id="table_footer"></div>
   </footer>
-  <script type="text/javascript">
-    $(function(){
-      $("#table_footer").load("table_footer.html");
-    });
-
-    var $nav_bar = $("#nav_bar");
-    // $nav_bar.append("<a href=\"javascript:;\">Go Nowhere!</a>");
-    $nav_bar.append("<button onclick=\"loadContent1();\">Load footer_links.html</button>");
-    console.log("$nav_bar:");
-    console.log($nav_bar);
-  </script>
 </html>

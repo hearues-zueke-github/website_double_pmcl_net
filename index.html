@@ -5,40 +5,82 @@
 
     <link rel="stylesheet" type="text/css" href="mystyle.css">
 
-    <div id="nav_links"></div>
-
     <link rel="icon" type="image/x-icon" href="imag/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="imag/favicon.ico" />
-    <meta name="keywords" content="This is a page about math stuff, programming, and a lot of other things" />
-    <meta name="Description" content="Some cool stuff about math, programming and so on." />
+    <meta id="meta_keywords" name="keywords" content="This is a page about math stuff, programming, and a lot of other things" />
+    <meta id="meta_Description" name="Description" content="Some cool stuff about math, programming and so on." />
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    
-    <title>double-pmcl.net - My first Page</title>
+    <script type="text/javascript" src="jquery.ensure.js"></script>
   </head>
-  <script type="text/javascript">
-    $(function(){
-      $("#nav_links").load("nav_links.html");
-    });
-  </script>
   
   <body>
-    <h1>Welcome to my homepage!</h1>
-    <p>This is my my first homepage, and my nickname is double-pmcl (as you can suggest ^^).</p>
-    <div class="container_center" style="margin-left:auto;margin-right:auto;">
-      <figure>
-        <img src="imag/test123.png" alt="A testing image ^^" style="width:128px;height:128px;">
-        <figcaption><small>This will be my logo for this website</small></figcaption>
-      </figure>
+    <p>Here is the template site for the better design: <a href="startbootstrap_clean_blog_gh_pages/index.html">A better template site for my homepage</a>.</p>
+
+    <div id="nav_links"></div>
+    <div id="navigation_bar"></div>
+    <div id="main_content"></di"Waiting for demo to finish!"v>
+      <p>Doing some logging here:</p>
     </div>
   </body>
+
+  <script type="text/javascript" >
+    var navbtn_index_onclick = function() {
+      $("#main_content").load("contents/main.html");
+      document.title = "double-pmcl.net - My first Page";
+    };
+    var navbtn_math_onclick = function() {
+      $("#main_content").load("contents/math.html");
+      document.title = "double-pmcl.net - Math";
+    };
+    var navbtn_programming_onclick = function() {
+      $("#main_content").load("contents/programming.html")
+      document.title = "double-pmcl.net - Programs";
+    };
+    var navbtn_cryptography_onclick = function() {
+      $("#main_content").load("contents/cryptography.html")
+      document.title = "double-pmcl.net - Cryptography";
+    };
+    var navbtn_numeric_onclick = function() {
+      $("#main_content").load("contents/numeric.html")
+      document.title = "double-pmcl.net - Numericals";
+    };
+    var navbtn_test_page_1_onclick = function() {
+      $("#main_content").load("contents/test_page_1.html")
+      document.title = "double-pmcl.net - test_page_1";
+    };
+    
+    navbtn_index_onclick();
+  </script>
 
   <footer>
     <div id="table_footer"></div>
   </footer>
+
+  <!-- <script src="pre_script.js"> -->
   <script type="text/javascript">
-    $(function(){
-      $("#table_footer").load("table_footer.html"); 
-    });
+    // $("#nav_links").load("nav_links.html");
+    $("#navigation_bar").load("navigation_bar.html");
+    $("#table_footer").load("table_footer.html"); 
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function finish_later_stuff() {
+      $("div#navigation_bar li a").addClass("noselect");
+      $("div#navigation_bar li a:first").addClass("active");
+
+      $('div#navigation_bar li a').on('click', function () {
+        $('div#navigation_bar li').find('a.active').removeClass('active');
+        $(this).addClass('active');
+      });
+
+      $(document).ready(function(){
+        $(this).scrollTop(0);
+      });
+    }
+
+    $.ensure('div#navigation_bar li a').then(finish_later_stuff);
   </script>
 </html>

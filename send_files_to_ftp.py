@@ -26,9 +26,13 @@ if __name__ == "__main__":
 
     def get_next_put_commands(dct):
         next_folder = dct["next_folder"]
+        if next_folder != "":
+            next_folder += "/"
         file_names = dct["file_names"]
 
-        put_commands = ""
+        put_commands = "mkdir -p {remote_root_dir}{next_folder};".format(
+            remote_root_dir=remote_root_dir,
+            next_folder=next_folder)
         for file_name in file_names:
             put_commands += put_template.format(next_folder=next_folder, file_name=file_name)
 
@@ -37,6 +41,7 @@ if __name__ == "__main__":
     put_commands_whole = ""
 
     put_commands_whole += get_next_put_commands(folders_dict["root_folder"])
+    put_commands_whole += get_next_put_commands(folders_dict["contents"])
     # put_commands_whole += get_next_put_commands(folders_dict["startbootstrap_clean_blog_gh_pages"])
 
     ftp_command = "lftp -e \"{put_commands_whole}bye\" -u {usr},{pwd} {hst_adr}".format(

@@ -3,15 +3,23 @@ folders_dict = {
         "next_folder": "",
         "file_names": [
             "index.html",
-            "math.html",
-            "numeric.html",
-            "programming.html",
-            "cryptography.html",
             "mystyle.css",
             "nav_links.html",
+            "navigation_bar.html",
             "footer_links.html",
             "site_viewer_counter.html",
             "table_footer.html",
+            "jquery.ensure.js",
+        ]
+    },
+    "contents": {
+        "next_folder": "contents",
+        "file_names": [
+            "cryptography.html",
+            "main.html",
+            "math.html",
+            "numeric.html",
+            "programming.html",
             "test_page_1.html",
         ]
     },

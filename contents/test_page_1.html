@@ -1,0 +1,37 @@
+<p>Try this buttons out!</p>
+
+<script type="text/javascript">
+
+var loadContent1 = function(){
+  $(function(){
+    $("#site_content").html(`
+      <a id="test_div1">test! in a markdown!!! Pressed the button nr. 1!</a>
+    `); 
+  });
+};
+var loadContent2 = function(){
+  $(function(){
+    $("#site_content").html(`
+      <div id="test_div2">This is only a test! Pressed the button nr.2!</div>
+    `);
+  });
+};
+var loadContent3 = function(){
+  $(function(){
+    $("#site_content").html(`
+      <div id="test_div3">This is also a test! Pressed the button nr.3!!!!</div>
+    `);
+  });
+};
+</script>
+
+<button onclick="loadContent1();">Load footer_flinks.html</button>
+<button onclick="loadContent2();">Load site_viewer_counter.html</button>
+
+<div id="site_content"></div>
+
+<script type="text/javascript">
+  var $nav_links = $("#nav_links");
+  console.log("$nav_links:");
+  console.log($nav_links);
+</script>
