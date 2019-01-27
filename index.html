@@ -57,15 +57,9 @@
     <div id="table_footer"></div>
   </footer>
 
-  <!-- <script src="pre_script.js"> -->
   <script type="text/javascript">
-    // $("#nav_links").load("nav_links.html");
     $("#navigation_bar").load("navigation_bar.html");
     $("#table_footer").load("table_footer.html"); 
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
 
     function finish_later_stuff() {
       $("div#navigation_bar li a").addClass("noselect");
