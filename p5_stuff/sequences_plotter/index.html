@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no" />
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="w3.css">
+
+    <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script>
+    <script language="javascript" type="text/javascript" src="utils.js"></script>
+    <script language="javascript" type="text/javascript" src="code.js"></script>
+    <script language="javascript" type="text/javascript" src="buttons_grid.js"></script>
+
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+    <script language="javascript" type="text/javascript" src="../../libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.ensure.js"></script>
+  </head>
+
+  <body oncontextmenu="return false;" style="
+      /*overflow: scroll;*/
+  ">
+    <h1 style="color: white;">Use the arrow keys to move the ball!</h1>
+    <div style="
+    margin-left: 0%;
+    margin-right: 0%;">
+      <div><button type="button" onclick="useFunction1();">Use function nr. 1</button></div>
+      <div><button type="button" onclick="useFunction2();">Use function nr. 2</button></div>
+      <div><button class="active hover noselect" type="button" onclick="useFunction3();">Use function nr. 3</button></div>
+      <div><button class="active hover noselect" type="button" onclick="btnclickResetField();">Reset field</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="btnclickMixField();">Mix field</button></div>
+    </div>
+    <div style="
+      /*display: table;*/
+      float: center;
+      /*text-align: center;*/
+      width: 100%;
+      margin: auto;
+      padding: 0px;
+
+      /*display: flex;*/
+      /*align-items: center;*/
+      /*justify-content: center;*/
+
+      /*margin-top: 200px;*/
+      /*padding-top: 100px;*/
+    ">
+      <div id="canvas_div" style="
+        margin: auto;
+        padding: 0px;
+      "></div>
+      <div id="buttons_field" style="
+        background: black;
+        margin: auto;
+        padding: 0px;
+        display: table;
+        text-align: center;
+        
+        /*padding-left: 20%;*/
+        /*width: 100%;*/
+        /*width: 100%;*/
+        /*width: 550px;*/
+        /*height: 400px;*/
+        /*float: right;*/
+      "></div>
+    </div>
+  </body>
+
+  <script language="javascript" type="text/javascript">
+    createButtonsGrid();
+  </script>
+</html>

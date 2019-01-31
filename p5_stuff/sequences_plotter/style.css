@@ -1,0 +1,68 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+/*html,*/
+/*body {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*margin: 0;*/
+/*}*/
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #123456;
+}
+
+canvas {
+    background-color: #aaa;
+    /*display: block;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-top: auto;*/
+    /*margin-bottom: auto;*/
+    width: 100%;
+    height: 100%;
+}
+
+div#button {
+    background-color: #FF0000;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: : 4px;
+    padding-bottom: : 4px;
+}
+
+div#button .hover:hover {
+    background-color: #0000FF;
+    cursor: default;
+}
+
+div#button .active:active {
+    background-color: #00FF00;
+    cursor: default;
+}
+
+div#buttons_field button {
+    padding: 0px;
+    margin: 0px;
+    border-width: 1px;
+    border-color: #000000;
+    display: block;
+    float: left;
+}
+
+div#buttons_field button:focus {
+    outline: 0;
+}
