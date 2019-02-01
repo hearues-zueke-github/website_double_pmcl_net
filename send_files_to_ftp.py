@@ -40,11 +40,14 @@ if __name__ == "__main__":
 
     put_commands_whole = ""
 
-    # put_commands_whole += get_next_put_commands(folders_dict["root_folder"])
+    put_commands_whole += get_next_put_commands(folders_dict["root_folder"])
     # put_commands_whole += get_next_put_commands(folders_dict["contents"])
     # put_commands_whole += get_next_put_commands(folders_dict["mouse_movements"])
     # put_commands_whole += get_next_put_commands(folders_dict["p5_playground_1"])
-    put_commands_whole += get_next_put_commands(folders_dict["sequences_plotter"])
+    
+    # put_commands_whole += get_next_put_commands(folders_dict["sequences_plotter"])
+    put_commands_whole += get_next_put_commands(folders_dict["light_off_game"])
+    put_commands_whole += get_next_put_commands(folders_dict["libraries"])
 
     # put_commands_whole += get_next_put_commands(folders_dict["startbootstrap_clean_blog_gh_pages"])
 

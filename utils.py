@@ -38,8 +38,25 @@ folders_dict = {
             "style.css",
         ]
     },
+    "libraries": {
+        "next_folder": "libraries",
+        "file_names": [
+            "jquery.min.js",
+        ]
+    },
     "sequences_plotter": {
         "next_folder": "p5_stuff/sequences_plotter",
+        "file_names": [
+            "index.html",
+            "code.js",
+            "buttons_grid.js",
+            "style.css",
+            "utils.js",
+            "w3.css",
+        ]
+    },
+    "light_off_game": {
+        "next_folder": "p5_stuff/light_off_game",
         "file_names": [
             "index.html",
             "code.js",
