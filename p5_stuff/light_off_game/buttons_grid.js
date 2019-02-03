@@ -1,5 +1,7 @@
-var btnFieldRows = 4;
-var btnFieldCols = 6;
+var btnFieldRows = 5;
+var btnFieldCols = 9;
+
+var solveSpeed = 100; // in ms
 
 var btnProp = {
   h: 70,
@@ -35,6 +37,7 @@ console.log(`colorsFont: ${colorsFont}`);
 
 var btnsFieldMain = {
   divIds: [],
+  objsBtn: {},
   btnIds: [],
   txtIds: [],
   fs: {},
@@ -49,6 +52,7 @@ var btnsFieldMain = {
 
 var btnsFieldClick = {
   divIds: [],
+  objsBtn: {},
   btnIds: [],
   fs: {},
   fsBtn: {},
@@ -143,6 +147,7 @@ function createButtonsGridClicked() {
           
           var $obj = $(fullId);
           $obj.on('click', fBtn);
+          btnsFieldClick.objsBtn[btnId] = $obj;
         });
       });
     });
@@ -322,4 +327,35 @@ function btnclickMixField() {
       f();
     }
   });
+}
+
+function btnclickSolveField() {
+  function* h() {
+    var keys = Object.keys(btnsFieldMain.fsBtn);
+    console.log(`keys: ${keys}`);
+    for (let key of keys) {
+      console.log(`key: ${key}`);
+    // Object.keys(btnsFieldMain.fsBtn).forEach(function(key) {
+      var f = btnsFieldClick.fs[key];
+      var $obj = btnsFieldClick.objsBtn[key];
+      var amount = (f.i === 0 ? 0 : colorsAmount - f.i);
+
+      for (var i = 0; i < amount; i++) {
+        yield true;
+        $obj.click();
+      }
+    }
+
+    yield false;
+  }
+
+  var gen = h();
+  
+  async function f() {
+    var r = gen.next().value;
+    if (r) {
+      setTimeout(f, solveSpeed);
+    }
+  }
+  f();
 }
