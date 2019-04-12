@@ -11,7 +11,7 @@ function setup() {
   createCanvas(800, 600);
   fill(255, 126);
   // Inputs: x, y, mass, gravity
-  console.log("width: "+width+", height: "+height)
+  console.log("width: "+width+", height: "+height);
   for (var i = 0; i < n; i++) {
     s_s.push(new Spring2D(width/2, (height*0.3+i*0.1), mass, gravity, i));
   }

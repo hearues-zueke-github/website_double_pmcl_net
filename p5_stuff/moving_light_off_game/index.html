@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="w3.css">
 
-    <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
-    <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script>
+    <!-- <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script> -->
     <script language="javascript" type="text/javascript" src="utils.js"></script>
     <script language="javascript" type="text/javascript" src="code.js"></script>
     <script language="javascript" type="text/javascript" src="buttons_grid.js"></script>
@@ -19,7 +19,7 @@
 
   <body oncontextmenu="return false;" style="
       /*overflow: scroll;*/
-  ">
+  " onkeydown="keyDown(event);" onkeyup="keyUp(event);">
     <!-- <h1 style="color: white;">Use the arrow keys to move the ball!</h1> -->
     <div style="
       margin-left: 0%;
@@ -79,12 +79,12 @@
         padding: 0px;
         display: table;
         text-align: center;
-      "></div>
+      ">Not used!</div>
     </div>
   </body>
 
   <script language="javascript" type="text/javascript">
-    createButtonsGridClicked();
+    // createButtonsGridClicked();
     createButtonsGrid();
   </script>
 </html>

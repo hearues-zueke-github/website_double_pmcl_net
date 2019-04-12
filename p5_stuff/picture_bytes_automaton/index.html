@@ -37,6 +37,9 @@
       <div><button class="active hover noselect" type="button"  onclick="btnclickMixField();">Mix field</button></div>
       <div><button class="active hover noselect" type="button"  onclick="btnclickSolveField();">Solve field</button></div>
       <div><button class="active hover noselect" type="button"  onclick="btnclickDisplaySolution();">Display solution</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="addNewBtnField();">Add new btn field</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="deleteBtnField();">Delete btn field</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="doSomethingWithTest();">Do something with test!</button></div>
     </div>
 
     <div style="
@@ -65,13 +68,6 @@
         padding: 0px;
         display: table;
         text-align: center;
-        
-        /*padding-left: 20%;*/
-        /*width: 100%;*/
-        /*width: 100%;*/
-        /*width: 550px;*/
-        /*height: 400px;*/
-        /*float: right;*/
       "></div>
       <div id="buttons_field_used" style="
         background: #101010;
@@ -81,10 +77,24 @@
         text-align: center;
       "></div>
     </div>
+    <div>
+      <div style="background-color: #107577">Begin!</div>
+      <div id="buttons_field_chosen_cells" style="
+          background: #101010;
+          margin: auto;
+          margin-left: 20%;
+          padding: 0px;
+          /*width: 500px;*/
+          display: table;
+          text-align: left; //center;
+        "></div>
+      <div style="background-color: #77170A">End!</div>
+    </div>
   </body>
 
   <script language="javascript" type="text/javascript">
-    createButtonsGridClicked();
-    createButtonsGrid();
+    // createButtonsGridClicked();
+
+    // createButtonsGrid();
   </script>
 </html>

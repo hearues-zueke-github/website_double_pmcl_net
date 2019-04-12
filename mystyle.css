@@ -40,13 +40,21 @@ div#navigation_bar li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  border-style: solid;
+  border: 4px;
+  border-color: #101010;
 }
 
 div#navigation_bar li a:hover {
+  color: #f2ff9a;
   background-color: #156;
 }
 
 div#navigation_bar li a.active {
   color: #FFFFFF;
+  /*background-color: #873261;*/
   background-color: #642060;
+  /*border-style: solid;*/
+  /*border: 2px;*/
+  /*border-color: #343434;*/
 }

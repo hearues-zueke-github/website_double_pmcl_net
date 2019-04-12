@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="w3.css">
 
+    <script language="javascript" type="text/javascript" src="../../libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.ensure.js"></script>
+
     <script language="javascript" type="text/javascript" src="../../libraries/p5.js"></script>
     <script language="javascript" type="text/javascript" src="../../libraries/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="utils.js"></script>
@@ -13,8 +16,6 @@
     <script language="javascript" type="text/javascript" src="buttons_grid.js"></script>
 
     <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
-    <script language="javascript" type="text/javascript" src="../../libraries/jquery.min.js"></script>
-    <script type="text/javascript" src="../../jquery.ensure.js"></script>
   </head>
 
   <body oncontextmenu="return false;" style="
@@ -26,17 +27,25 @@
       margin-right: 0%;
       margin-top: 20px;
       margin-bottom: 20px;
-      float: center;
+      /*float: left;*/
       padding: 0px;
-      text-align: center;
+      text-align: left;
     ">
       <!-- <div><button type="button" onclick="useFunction1();">Use function nr. 1</button></div> -->
       <!-- <div><button type="button" onclick="useFunction2();">Use function nr. 2</button></div> -->
       <!-- <div><button class="active hover noselect" type="button" onclick="useFunction3();">Use function nr. 3</button></div> -->
-      <div><button class="active hover noselect" type="button" onclick="btnclickResetField();">Reset field</button></div>
-      <div><button class="active hover noselect" type="button"  onclick="btnclickMixField();">Mix field</button></div>
-      <div><button class="active hover noselect" type="button"  onclick="btnclickSolveField();">Solve field</button></div>
-      <div><button class="active hover noselect" type="button"  onclick="btnclickDisplaySolution();">Display solution</button></div>
+<!--      <div><button class="active hover noselect" type="button" onclick="btnclickResetField();">Reset field</button></div>-->
+<!--      <div><button class="active hover noselect" type="button"  onclick="btnclickMixField();">Mix field</button></div>-->
+<!--      <div><button class="active hover noselect" type="button"  onclick="btnclickSolveField();">Solve field</button></div>-->
+<!--      <div><button class="active hover noselect" type="button"  onclick="btnclickDisplaySolution();">Display solution</button></div>-->
+
+      <!--      <div><button class="active hover noselect" type="button"  onclick="addNewBtnField();">Add new btn field</button></div>-->
+    <!--      <div><button class="active hover noselect" type="button"  onclick="deleteBtnField();">Delete btn field</button></div>-->
+
+      <div><button class="active hover noselect" type="button"  onclick="addNewBtnRow();">Add new btn row</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="deleteBtnRow();">Delete btn row</button></div>
+      <div><button class="active hover noselect" type="button"  onclick="convertToLambdas();">Convert to lambda functions</button></div>
+<!--      <div><button class="active hover noselect" type="button"  onclick="doSomethingWithTest();">Do something with test!</button></div>-->
     </div>
 
     <div style="
@@ -65,13 +74,6 @@
         padding: 0px;
         display: table;
         text-align: center;
-        
-        /*padding-left: 20%;*/
-        /*width: 100%;*/
-        /*width: 100%;*/
-        /*width: 550px;*/
-        /*height: 400px;*/
-        /*float: right;*/
       "></div>
       <div id="buttons_field_used" style="
         background: #101010;
@@ -81,10 +83,30 @@
         text-align: center;
       "></div>
     </div>
+    <div>
+      <div style="background-color: #107577">Begin Lambdas!</div>
+      <div id="div_lambda_functions" style="
+          background-color: #17222C"></div>
+      <div style="background-color: #77170A">End Lambdas!</div>
+
+      <div style="background-color: #107577">Begin!</div>
+      <div id="buttons_field_chosen_cells" style="
+          background: #101010;
+          margin: auto;
+          margin-left: 10%;
+          padding: 0px;
+          /*width: 500px;*/
+          display: table;
+          text-align: left; //center;
+        "></div>
+      <div style="background-color: #77170A">End!</div>
+    </div>
   </body>
 
   <script language="javascript" type="text/javascript">
-    createButtonsGridClicked();
-    createButtonsGrid();
+    // createButtonsGridClicked();
+
+    // createButtonsGrid();
+    btnObjField = new BtnObjField('buttons_field_chosen_cells');
   </script>
 </html>

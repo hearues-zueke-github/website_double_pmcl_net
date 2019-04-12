@@ -49,7 +49,29 @@ folders_dict = {
         "file_names": [
             "index.html",
             "code.js",
+            "event_functions.js",
+            "style.css",
+            "utils.js",
+            "w3.css",
+        ]
+    },
+    "moving_light_off_game": {
+        "next_folder": "p5_stuff/moving_light_off_game",
+        "file_names": [
             "buttons_grid.js",
+            "index.html",
+            "code.js",
+            "style.css",
+            "utils.js",
+            "w3.css",
+        ]
+    },
+    "moving_light_off_game_p5": {
+        "next_folder": "p5_stuff/moving_light_off_game_p5",
+        "file_names": [
+            "event_functions.js",
+            "index.html",
+            "code.js",
             "style.css",
             "utils.js",
             "w3.css",
@@ -60,7 +82,7 @@ folders_dict = {
         "file_names": [
             "index.html",
             "code.js",
-            "buttons_grid.js",
+            "event_functions.js",
             "style.css",
             "utils.js",
             "w3.css",

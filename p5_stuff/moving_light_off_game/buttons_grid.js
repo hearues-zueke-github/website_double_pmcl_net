@@ -3,12 +3,21 @@ var btnFieldCols = 5;
 
 var solveSpeed = 100; // in ms
 
+var changeText = true;
+
+var colorsAmount = 2;
+
 var btnProp = {
   h: 70,
   w: 70
 };
 
-var colorsAmount = 3;
+var pressedKeys = {
+  37: false,
+  38: false,
+  39: false,
+  40: false
+};
 
 var colors = [
   '#111111',
@@ -18,7 +27,8 @@ var colors = [
 ];
 
 var hexInvertTable = {
-  '0': 'F', '1': 'E', '2': 'D', '3': 'C', '4': 'B', '5': 'A', '6': '9', '7': '8', '9': '6', '8': '7',
+  '0': 'F', '1': 'E', '2': 'D', '3': 'C', '4': 'B',
+  '5': 'A', '6': '9', '7': '8', '9': '6', '8': '7',
   'F': '0', 'E': '1', 'D': '2', 'C': '3', 'B': '4', 'A': '5',
   'f': '0', 'e': '1', 'd': '2', 'c': '3', 'b': '4', 'a': '5'
 };
@@ -36,7 +46,22 @@ var colorsFont = colors.map(x =>
 console.log(`colors: ${colors}`);
 console.log(`colorsFont: ${colorsFont}`);
 
+// window.event.preventDefault();
+
+function doKeyDown(e) {
+  console.log(`e.keyCode: ${e.keyCode}`);
+}
+
+// var arrL = $.Event( "keydown", { keyCode: 37 } );
+// var arrU = $.Event( "keydown", { keyCode: 38 } );
+// var arrR = $.Event( "keydown", { keyCode: 39 } );
+// var arrD = $.Event( "keydown", { keyCode: 40 } );
+
+// window.addEventListener( "keypress", doKeyDown, false );
+
 var btnsFieldMain = {
+  r: 0,
+  c: 0,
   divIds: [],
   objsBtn: {},
   btnIds: [],
@@ -47,17 +72,8 @@ var btnsFieldMain = {
   btnsProp: {},
   divObjUp: {},
   divObjDown: {},
+  divObjD2: {},
   divMainId: "#buttons_field",
-  btnColors: colors
-};
-
-var btnsFieldClick = {
-  divIds: [],
-  objsBtn: {},
-  btnIds: [],
-  fs: {},
-  fsBtn: {},
-  divMainId: "#buttons_field_used",
   btnColors: colors
 };
 
@@ -81,80 +97,6 @@ function getButtonHTML(id, width, height, bgcolor, content) {
     background-color: ${bgcolor};
     ">${content}</button>
   `;
-}
-
-function createButtonsGridClicked() {
-  function doSomeStuff() {
-    for (var r = 0; r < btnFieldRows; r++) {
-        var btnIdsRow = [];
-        btnsFieldClick.divIds.push(`div_btn_row_${r}`);
-        for (var c = 0; c < btnFieldCols; c++) {
-          btnIdsRow.push(`btn_${r}_${c}`);
-        }
-        btnsFieldClick.btnIds.push(btnIdsRow);
-    }
-
-    btnsFieldClick.divIds.forEach(function(divId) {
-      $(`${btnsFieldClick.divMainId}`).append(getDivHTML(divId));
-    });
-
-    (zip([btnsFieldClick.divIds, btnsFieldClick.btnIds])).forEach(function(arr) {
-      divId = arr[0];
-      btnIdsRow = arr[1];
-      btnIdsRow.forEach(function(btnId){
-        $(`${btnsFieldClick.divMainId} #${divId}`).append(getButtonHTML(btnId, btnProp.w, btnProp.h, btnsFieldClick.btnColors[0], ''));
-      });
-    });
-
-    (zip([btnsFieldClick.divIds, btnsFieldClick.btnIds])).forEach(function(arr) {
-      divId = arr[0];
-      btnIdsRow = arr[1];
-
-      btnIdsRow.forEach(function(btnId) {
-        var fullId = `${btnsFieldClick.divMainId} #${divId} #${btnId}`;
-
-        $.ensure(fullId).then(function() {
-          var $obj = $(fullId);
-          var f = function() {
-            f.i = (f.i+1)%f.colorsAmount;
-            var c = f.colors[f.i];
-            $obj.css('background-color', c);
-            console.log(`divMainId: ${btnsFieldClick.divMainId}, clicked ${btnId}`);
-
-            var $divDown = btnsFieldMain.divObjDown[btnId];
-            //$divDown.html(`${f.i}`);
-          };
-          
-          f.colors = btnsFieldClick.btnColors;
-          f.colorsAmount = colorsAmount;
-          f.i = 0;
-          
-          f.reset = function() {
-            f.i = -1;
-            f();
-          }
-
-          btnsFieldClick.fs[btnId] = f;
-
-          var fBtn = function() {
-            var ff = btnsFieldMain.ffs[btnId];
-            ff();
-
-            console.log(`btnsFieldClick.divMainId: ${btnsFieldClick.divMainId}, clicked ${btnId}`);
-            f();
-          };
-
-          btnsFieldClick.fsBtn[btnId] = fBtn;
-          
-          var $obj = $(fullId);
-          $obj.on('click', fBtn);
-          btnsFieldClick.objsBtn[btnId] = $obj;
-        });
-      });
-    });
-  }
-
-  $.ensure('#buttons_field').then(doSomeStuff);
 }
 
 function createButtonsGrid() {
@@ -181,10 +123,14 @@ function createButtonsGrid() {
         var c = parseInt(arr[2]);
         var divIdUp = "upper_div";
         var divIdDown = "lower_div";
+        var divIdD2 = "div_2";
+
+        var val = (r == btnsFieldMain.r && c == btnsFieldMain.c ? 1 : 0);
         var content = `
         <div>
-          <div id="${divIdUp}" style="color: ${colorsFont[0]}">${r},${c}</div>
-          <div id="${divIdDown}" style="color: ${colorsFont[0]};">0</div>
+          <div id="${divIdUp}" style="color: ${colorsFont[0]}; font-size: 10;">${r},${c}</div>
+          <div id="${divIdDown}" style="color: ${colorsFont[0]}; font-size: 10;">0</div>
+          <div id="${divIdD2}" style="color: ${colorsFont[0]}; font-size: 10;">${val}</div>
         </div>`;
 
         btnsFieldMain.btnsProp[btnId] = {};
@@ -197,11 +143,17 @@ function createButtonsGrid() {
           var $obj = $(fullDivIdUp);
           btnsFieldMain.divObjUp[btnId] = $obj;
         });
-        
+
         var fullDivIdDown = `#${btnId} #${divIdDown}`;
         $.ensure(fullDivIdDown).then(function() {
           var $obj = $(fullDivIdDown);
           btnsFieldMain.divObjDown[btnId] = $obj;
+        });
+
+        var fullDivIdD2 = `#${btnId} #${divIdD2}`;
+        $.ensure(fullDivIdD2).then(function() {
+          var $obj = $(fullDivIdD2);
+          btnsFieldMain.divObjD2[btnId] = $obj;
         });
       });
     });
@@ -235,6 +187,7 @@ function createButtonsGrid() {
           }
 
           btnsFieldMain.fs[btnId] = f;
+          btnsFieldMain.objsBtn[btnId] = $obj;
         });
       });
     });
@@ -250,6 +203,7 @@ function createButtonsGrid() {
           console.log(`is going well for '${fullId}'!`);
 
           var ff = function() {
+            ff.i = (ff.i+1) % colorsAmount;
             if (ff.up !== undefined) {
               ff.up();
             }
@@ -264,7 +218,11 @@ function createButtonsGrid() {
             }
 
             ff.center();
+
+            var $divDown = btnsFieldMain.divObjDown[btnId];
+            $divDown.html(`${ff.i}`);
           }
+          ff.i = 0;
           ff.center = btnsFieldMain.fs[btnId];
 
           var btnPropNow = btnsFieldMain.btnsProp[btnId];
@@ -293,13 +251,13 @@ function createButtonsGrid() {
             console.log(`btnsFieldMain.divMainId: ${btnsFieldMain.divMainId}, clicked ${btnId}`);
             // var fClick = btnsFieldClick.fs[btnId];
             // fClick();
-            var fClick = btnsFieldClick.fs[btnId];
-            fClick();
+            // var fClick = btnsFieldClick.fs[btnId];
+            // fClick();
           };
 
           fBtn.reset = function() {
             btnsFieldMain.fs[btnId].reset();
-            btnsFieldClick.fs[btnId].reset();
+            // btnsFieldClick.fs[btnId].reset();
           }
 
           btnsFieldMain.fsBtn[btnId] = fBtn;
@@ -336,10 +294,11 @@ function btnclickSolveField() {
     console.log(`keys: ${keys}`);
     for (let key of keys) {
       console.log(`key: ${key}`);
+
     // Object.keys(btnsFieldMain.fsBtn).forEach(function(key) {
-      var f = btnsFieldClick.fs[key];
-      var $obj = btnsFieldClick.objsBtn[key];
-      var amount = (f.i === 0 ? 0 : colorsAmount - f.i);
+      var ff = btnsFieldMain.ffs[key];
+      var $obj = btnsFieldMain.objsBtn[key];
+      var amount = (ff.i === 0 ? 0 : colorsAmount - ff.i);
 
       for (var i = 0; i < amount; i++) {
         yield true;
@@ -374,11 +333,112 @@ function btnclickMixField() {
 
 function btnclickDisplaySolution() {
   var $obj = $("#buttons_field_used");
-  var display = $obj.css('display');
+  // var display = $obj.css('display');
 
-  if (display === 'table') {
-    $obj.css('display', 'none');
+  if (changeText) {
+    // $obj.css('display', 'none');
+    $obj.html("Used!");
+    changeText = false;
   } else {
-    $obj.css('display', 'table');
+    // $obj.css('display', 'table');
+    $obj.html("Not used!");
+    changeText = true;
+  }
+}
+
+function keyDown(event) {
+  // console.log(`keyDown: event.keyCode: ${event.keyCode}`);
+  var keyCode = event.keyCode;
+
+  if (keyCode in pressedKeys) {
+    if (pressedKeys[keyCode] === true) {
+      return;
+    } else {
+      pressedKeys[keyCode] = true;
+    }
+  }
+
+  var r = btnsFieldMain.r;
+  var c = btnsFieldMain.c;
+  var btnNameNow = `btn_${r}_${c}`;
+  var divNow = btnsFieldMain.divObjD2[btnNameNow];
+
+  switch (keyCode) {
+    case 37: // left
+      console.log("down left");
+      var btnNameNew = `btn_${r}_${c-1}`;
+      if (btnNameNew in btnsFieldMain.objsBtn) {
+        btnsFieldMain.c -= 1;
+        var divNew = btnsFieldMain.divObjD2[btnNameNew];
+
+        divNow.html("0");
+        divNew.html("1");
+        btnsFieldMain.objsBtn[btnNameNew].click();
+      }
+      break;
+    case 38: // up
+      console.log("down up");
+      var btnNameNew = `btn_${r-1}_${c}`;
+      if (btnNameNew in btnsFieldMain.objsBtn) {
+        btnsFieldMain.r -= 1;
+        var divNew = btnsFieldMain.divObjD2[btnNameNew];
+
+        divNow.html("0");
+        divNew.html("1");
+        btnsFieldMain.objsBtn[btnNameNew].click();
+      }
+      break;
+    case 39: // right
+      console.log("down right");
+      var btnNameNew = `btn_${r}_${c+1}`;
+      if (btnNameNew in btnsFieldMain.objsBtn) {
+        btnsFieldMain.c += 1;
+        var divNew = btnsFieldMain.divObjD2[btnNameNew];
+
+        divNow.html("0");
+        divNew.html("1");
+        btnsFieldMain.objsBtn[btnNameNew].click();
+      }
+      break;
+    case 40: // down
+      console.log("down down");
+      var btnNameNew = `btn_${r+1}_${c}`;
+      if (btnNameNew in btnsFieldMain.objsBtn) {
+        btnsFieldMain.r += 1;
+        var divNew = btnsFieldMain.divObjD2[btnNameNew];
+
+        divNow.html("0");
+        divNew.html("1");
+        btnsFieldMain.objsBtn[btnNameNew].click();
+      }
+      break;
+  }
+}
+
+function keyUp(event) {
+  // console.log(`keyUp: event.keyCode: ${event.keyCode}`);
+  var keyCode = event.keyCode;
+
+  if (keyCode in pressedKeys) {
+    if (pressedKeys[keyCode] === false) {
+      return;
+    } else {
+      pressedKeys[keyCode] = false;
+    }
+  }
+
+  switch (keyCode) {
+    case 37: // left
+      console.log("up left");
+      break;
+    case 38: // up
+      console.log("up up");
+      break;
+    case 39: // right
+      console.log("up right");
+      break;
+    case 40: // down
+      console.log("up down");
+      break;
   }
 }
