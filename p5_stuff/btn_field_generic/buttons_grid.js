@@ -75,7 +75,7 @@ var btnsFields = {
     ]
 };
 
-function getDivHTML(id) {
+function getDivHTML (id) {
   return `
     <div id="${id}" style="
       display: table-row;
@@ -87,7 +87,7 @@ function getDivHTML(id) {
   `;
 }
 
-function getDivHTMLFloatLeft(id) {
+function getDivHTMLFloatLeft (id) {
   return `
     <div id="${id}" style="
       display: table-row;
@@ -101,7 +101,7 @@ function getDivHTMLFloatLeft(id) {
   `;
 }
 
-function getDivHTMLFloatLeftTable(id) {
+function getDivHTMLFloatLeftTable (id) {
   return `
     <div id="${id}" style="
       display: table;
@@ -115,7 +115,7 @@ function getDivHTMLFloatLeftTable(id) {
   `;
 }
 
-function getButtonHTML(id, width, height, bgcolor, content) {
+function getButtonHTML (id, width, height, bgcolor, content) {
   return `
     <button id="${id}" style="
     width: ${width}px;
@@ -125,8 +125,8 @@ function getButtonHTML(id, width, height, bgcolor, content) {
   `;
 }
 
-function addNewBtnField() {
-  function _addNewBtnField() {
+function addNewBtnField () {
+  function _addNewBtnField () {
     if (btnsFields.rows >= 3) {
       return;
     }
@@ -162,7 +162,7 @@ function addNewBtnField() {
 
     var colorsAmount = 2;
 
-      function addNewBtnFieldInRow() {
+      function addNewBtnFieldInRow () {
       if (btnsFieldRow.cols >= 4) {
         return;
       }
@@ -286,7 +286,7 @@ function addNewBtnField() {
     }
 
 
-      function deleteLastBtnFieldInRow() {
+      function deleteLastBtnFieldInRow () {
 
         if (btnsFieldRow.cols <= 0) {
           return;
@@ -334,7 +334,7 @@ function addNewBtnField() {
   $.ensure('buttons_field_chosen_cells').then(_addNewBtnField());
 }
 
-function deleteBtnField() {
+function deleteBtnField () {
   if (btnsFields.fieldObjs.length > 0) {
     // $.ensure(`${btnsFields.fieldObjs}`).then(function () {
       var btnsFieldRow = btnsFields.fieldObjs.pop();
@@ -345,7 +345,7 @@ function deleteBtnField() {
 }
 
 class BtnObj {
-  constructor(parent, col, row) {
+  constructor (parent, col, row) {
     this.parent = parent;
     this.col = col;
     this.row = row;
@@ -380,7 +380,7 @@ class BtnObj {
 }
 
 class OneBtnField {
-  constructor(parent, colField, rowField, btnsX, btnsY) {
+  constructor (parent, colField, rowField, btnsX, btnsY) {
     this.parent = parent;
     this.colField = colField;
     this.rowField = rowField;
@@ -404,8 +404,10 @@ class OneBtnField {
           float: left;
           display: table;
           text-align: left;
-          padding-top: 30px;
-          padding-left: 10px;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-left: 8px;
+          padding-right: 5px;
           ">
         </div>`;
 
@@ -490,7 +492,7 @@ class OneBtnField {
 }
 
 class BtnObjRow {
-  constructor(parent, row) {
+  constructor (parent, row) {
     this.parent = parent;
     this.row = row;
     this.btnObjs = [];
@@ -544,7 +546,7 @@ class BtnObjRow {
 }
 
 class BtnObjField {
-  constructor(parentDivId) {
+  constructor (parentDivId) {
     this.divId = parentDivId;
     var t = this;
     $.ensure(`#${this.divId}`).then(function() {
@@ -575,9 +577,17 @@ class BtnObjField {
   }
 }
 
-function getAddDeleteHtmlDiv(row, divId, addId, deleteId) {
+function getAddDeleteHtmlDiv (row, divId, addId, deleteId) {
   return `
-<div id="${divId}" style="display: table-row">
+<div id="${divId}" 
+style="
+/*display: table-row;*/
+display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+white-space: nowrap;
+/*width: 100%;*/
+">
   <div id="extra_buttons_row_${row}" style="
   display: table-row;
   float: left;
@@ -593,7 +603,7 @@ function getAddDeleteHtmlDiv(row, divId, addId, deleteId) {
 }
 
 class BtnFieldLambdaConverter {
-  constructor(n) {
+  constructor (n) {
     this.n = n;
     this.size = n*2+1;
     // create empty array field first
@@ -626,7 +636,7 @@ class BtnFieldLambdaConverter {
   }
 }
 
-var lambdaVars = new BtnFieldLambdaConverter(2);
+var lambdaVars = new BtnFieldLambdaConverter(1);
 
 var btnProperties = {
   colors: [
@@ -639,25 +649,25 @@ var btnProperties = {
   btnsY: lambdaVars.size
 };
 
-var btnObjField = new BtnObjField('buttons_field_chosen_cells');
+var btnObjField;
 
-function addNewBtnRow() {
+function addNewBtnRow () {
   console.log('add new btn row!');
 
   btnObjField.addNewRow();
 }
 
-function deleteBtnRow() {
+function deleteBtnRow () {
   console.log('delete btn row!');
 
   btnObjField.popRow();
 }
 
-function convertToLambdas() {
+function convertToLambdas () {
   var $obj = $('#div_lambda_functions');
   $obj.empty();
 
-  $obj.append(`<div style="color: #88FF88;">New Line!</div>`);
+  // $obj.append(`<div style="color: #88FF88;">New Line!</div>`);
 
   var usedOrExpr = [];
   for (var j = 0; j < btnObjField.btnObjRows.length; j++) {
@@ -694,9 +704,317 @@ function convertToLambdas() {
 
   if (usedOrExpr.length > 0) {
     for (var i = 0; i < usedOrExpr.length; i++) {
-      $obj.append(`<div style="color: #15761b;">lambda expressions Nr. ${i}: <a style="color: #2ca218;">${usedOrExpr[i]}</a></div>`);
+      $obj.append(`<div style="color: #4ecb19;">${usedOrExpr[i]}</div>`);
+      // $obj.append(`<div style="color: #15761b;">lambda expressions Nr. ${i}: <a style="color: #2ca218;">${usedOrExpr[i]}</a></div>`);
     }
   } else {
     $obj.append(`<div style="color: #ff0000;">No single lambda inputs found!!!</div>`);
+  }
+}
+
+function drawOnCanvasRandomRects () {
+  var canvas = document.getElementById("canvas_images_1");
+  var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+
+  var randX = getRandomInt(0, width);
+  var randY = getRandomInt(0, height);
+  var randW = getRandomInt(0, width-randX);
+  var randH = getRandomInt(0, height-randY);
+
+  ctx.fillStyle = getRandomColor(50, 200);
+  // console.log(`randX: ${randX}, randY: ${randY}, randW: ${randW}, randH: ${randH}, ctx.fillStyle: ${ctx.fillStyle}`);
+  ctx.fillRect(randX, randY, randW, randH);
+}
+
+function drawRandomPixels () {
+  console.log(`calling function 'drawRandomPixels()'`);
+
+  var canvas = document.getElementById("canvas_images_1");
+  var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+
+  var imagedata = ctx.createImageData(width, height);
+
+  var data = imagedata.data;
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var pixelindex = (y * width + x) * 4;
+      data[pixelindex] = getRandomInt(0, 256);
+      data[pixelindex+1] = getRandomInt(0, 256);
+      data[pixelindex+2] = getRandomInt(0, 256);
+      data[pixelindex+3] = 255;
+    }
+  }
+
+  ctx.putImageData(imagedata, 0, 0);
+  // ctx.fillStyle = getRandomColor(50, 200);
+  // console.log(`randX: ${randX}, randY: ${randY}, randW: ${randW}, randH: ${randH}, ctx.fillStyle: ${ctx.fillStyle}`);
+  // ctx.fillRect(randX, randY, randW, randH);
+}
+
+function downloadCanvasImage () {
+  var canvas = document.getElementById("canvas_images_1");
+
+  var image = canvas.toDataURL();
+  // create temporary link
+  var tmpLink = document.createElement( 'a' );
+  tmpLink.download = 'image_test_123.png';
+  // set the name of the download file
+  tmpLink.href = image;
+  // temporarily add link to body and initiate the download
+  document.body.appendChild( tmpLink );
+  tmpLink.click();
+  document.body.removeChild( tmpLink );
+}
+
+function drawABlankCanvas () {
+  var canvas = document.getElementById("canvas_images_1");
+  var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+  console.log(`width: ${width}, height: ${height}`);
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(0, 0, width, height);
+}
+
+function getFrameField (height, width) {
+  field = Array(height);
+  for (var i = 0; i < height; i++) {
+    field[i] = Array(width);
+  }
+  return field
+}
+
+var frames = [];
+var framesField = [];
+var frameIdx = 0;
+var timeoutFunction = 0;
+
+function getNewBWFrame (width, height, addText=true) {
+  var canvas2 = document.getElementById("canvas_temp");
+  var ctx2 = canvas2.getContext("2d");
+
+  var idx = frames.length;
+  canvas2.height = height;
+  canvas2.width = width;
+  var imagedata = ctx2.createImageData(width, height);
+
+  var field = getFrameField(height, width);
+
+  var data = imagedata.data;
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var v = getRandomInt(0, 256);
+      v = v < 128 ? 0 : 1;
+      field[y][x] = v;
+    }
+  }
+
+  for (var x = 0; x < width; x++) {
+    for (var y = 0; y < height; y++) {
+      var v = getRandomInt(0, 256);
+      v = v < 128 ? 0 : 1;
+      field[y][x] = (field[y][x] + v) % 2;
+    }
+  }
+
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var v = getRandomInt(0, 256);
+      v = v < 128 ? 0 : 1;
+      field[y][x] = (field[y][x] + v) % 2;
+    }
+  }
+
+  for (var x = 0; x < width; x++) {
+    for (var y = 0; y < height; y++) {
+      var v = getRandomInt(0, 256);
+      v = v < 128 ? 0 : 1;
+      field[y][x] = (field[y][x] + v) % 2;
+    }
+  }
+
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var pixelindex = (y * width + x) * 4;
+      // black white image!
+      var v = field[y][x];
+      data[pixelindex+0] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+1] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+2] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+3] = 255;
+    }
+  }
+
+  if (addText) {
+    ctx2.putImageData(imagedata, 0, 0);
+    ctx2.fillStyle = '#000000FF';
+    ctx2.font = "30px Arial";
+    ctx2.fillText(""+(idx+1), 10, 50);
+  }
+
+  imagedata = ctx2.getImageData(0, 0, width, height);
+  return [field, imagedata];
+}
+
+function addNewRandomFrames () {
+  console.log(`calling function 'addNewRandomFrames ()'`);
+
+  var canvas = document.getElementById("canvas_images_1");
+  // var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+
+  for (var i = 0; i < 10; i++) {
+    var tuple = getNewBWFrame(width, height);
+    field= tuple[0];
+    imagedata = tuple[1];
+    frames.push(imagedata);
+  }
+}
+
+var frameTimeout = 100;
+
+function applyNewBWLambdaFunctions () {
+  console.log(`calling function 'applyNewBWLambdaFunctions ()'`);
+
+  if (timeoutFunction) {
+    clearTimeout(timeoutFunction);
+  }
+
+  var canvas = document.getElementById("canvas_images_1");
+  var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+
+  var tuple = getNewBWFrame(width, height, addText=false);
+  var fieldPrev = tuple[0];
+  var framePrev = tuple[1];
+
+  // framePrev = ctx.getImageData(0, 0, width, height);
+  var data = framePrev.data;
+  for (var y = 0; y < height; y++) {
+    for (var x = 0; x < width; x++) {
+      var pixelindex = (y * width + x) * 4;
+      // black white image!
+      var v = fieldPrev[y][x];
+      data[pixelindex+0] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+1] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+2] = v*255; // getRandomInt(0, 256);
+      data[pixelindex+3] = 255;
+    }
+  }
+
+  ctx.putImageData(framePrev, 0, 0);
+  ctx.fillStyle = '#FF0000FF';
+  ctx.font = "30px Arial";
+  ctx.fillText("nr.: "+(0), 20, 50);
+  framePrev = ctx.getImageData(0, 0, width, height);
+
+  frames = [];
+  framesField = [];
+
+  frames.push(framePrev);
+  frames.push(framePrev);
+  frames.push(framePrev);
+  framesField.push(fieldPrev);
+  framesField.push(fieldPrev);
+  framesField.push(fieldPrev);
+
+  var maxFrames = 14;
+  for (var i = 1; i < maxFrames; i++) {
+    var field = getFrameField(height, width);
+    var frame = ctx.createImageData(width, height);
+    var data = frame.data;
+    // apply later! function: u&r&p | u&ur&p | l&dl&d&!p
+
+    // apply function: u&r&p | u&r&p | l&d&!p
+    for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+        var p = fieldPrev[y][x];
+        var u, d, l, r;
+        if (y-1 < 0) { u = fieldPrev[height-1][x]; } else { u = fieldPrev[y-1][x]; }
+        if (y+1 > height-1) { d = fieldPrev[0][x]; } else { u = fieldPrev[y+1][x]; }
+        if (x-1 < 0) { l = fieldPrev[y][width-1]; } else { l = fieldPrev[y][x-1]; }
+        if (x+1 > width-1) { r = fieldPrev[y][0]; } else { r = fieldPrev[y][x+1]; }
+
+        field[y][x] = (u&r&p | u&r&p | l&d&!p | l&u&p + 1) % 2;
+
+        var pixelindex = (y * width + x) * 4;
+        // black white image!
+        var v = field[y][x];
+        data[pixelindex+0] = v*255; // getRandomInt(0, 256);
+        data[pixelindex+1] = v*255; // getRandomInt(0, 256);
+        data[pixelindex+2] = v*255; // getRandomInt(0, 256);
+        data[pixelindex+3] = 255;
+      }
+    }
+
+    ctx.putImageData(frame, 0, 0);
+    ctx.fillStyle = '#FF0000FF';
+    ctx.font = "30px Arial";
+    ctx.fillText("nr.: "+(i), 20, 50);
+    frame = ctx.getImageData(0, 0, width, height);
+
+    // frames.push(frame);
+
+    framesField.push(field);
+    frames.push(frame);
+
+    fieldPrev = field;
+    framePrev = frame;
+  }
+
+  frames.push(framePrev);
+  frames.push(framePrev);
+  frames.push(framePrev);
+  framesField.push(fieldPrev);
+  framesField.push(fieldPrev);
+  framesField.push(fieldPrev);
+
+  frameIdx = 0;
+  timeoutFunction = setTimeout(doTheFrameLoop, frameTimeout);
+}
+
+// TODO: create bw random frames!
+
+function doTheFrameLoop () {
+  var canvas = document.getElementById("canvas_images_1");
+  var ctx = canvas.getContext("2d");
+
+  frameIdx = (frameIdx + 1) % frames.length;
+  ctx.putImageData(frames[frameIdx], 0, 0);
+
+  timeoutFunction = setTimeout(doTheFrameLoop, frameTimeout);
+}
+
+function startTheFrameLoop () {
+  frames = [];
+  frameIdx = 0;
+  addNewRandomFrames();
+
+  timeoutFunction = setTimeout(doTheFrameLoop, frameTimeout);
+}
+
+function stopTheFrameLoop () {
+  if (timeoutFunction) {
+    clearTimeout(timeoutFunction);
+  }
+}
+
+class GifCanvases {
+  constructor () {
+    this.n = 0;
+    // this.$obj = [];
+    this.$canvases = [];
+    var t = this;
+    $.ensure(`#div_canvases`).then(function () {
+      t.$obj = $('#div_canvases');
+    });
+    const a = 2;
+
   }
 }
