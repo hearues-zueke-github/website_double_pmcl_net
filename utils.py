@@ -38,10 +38,34 @@ folders_dict = {
             "style.css",
         ]
     },
+    "btn_field_generic": {
+        "next_folder": "p5_stuff/btn_field_generic",
+        "file_names": [
+            "buttons_grid.js",
+            "code.js",
+            "index.html",
+            "style.css",
+            "utils.js",
+            "w3.css",
+        ],
+    },
+    "picture_bytes_automaton": {
+        "next_folder": "p5_stuff/picture_bytes_automaton",
+        "file_names": [
+            "buttons_grid.js",
+            "code.js",
+            "index.html",
+            "style.css",
+            "utils.js",
+            "w3.css",
+        ],
+    },
     "libraries": {
         "next_folder": "libraries",
         "file_names": [
             "jquery.min.js",
+            "gis.js",
+            "gis.worker.js",
         ]
     },
     "sequences_plotter": {

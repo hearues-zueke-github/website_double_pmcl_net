@@ -58,7 +58,7 @@ function Spring2D(xpos, ypos, m, g, idNum) {
   this.mass = m;
   this.gravity = g;
   this.radius = 10;
-  this.stiffness = 1.;
+  this.stiffness = 1.2;
   this.damping = 0.7;
   this.idNum = idNum
 
