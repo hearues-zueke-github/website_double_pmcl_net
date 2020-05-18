@@ -8,7 +8,7 @@ var btnProp = {
   w: 70
 };
 
-var colorsAmount = 3;
+var colorsAmount = 2;
 
 var colors = [
   '#111111',

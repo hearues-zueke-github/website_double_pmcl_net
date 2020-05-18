@@ -26,7 +26,8 @@ var gameOver = false;
 function preload () {
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
-    this.load.image('platform_red', 'assets/platform_red_32x32.png');
+    this.load.image('platform_red', 'assets/platform_32x32_muster.png');
+    // this.load.image('platform_red', 'assets/platform_red_32x32.png');
     this.load.image('platform_red_left', 'assets/platform_red_32x32_left.png');
     this.load.image('platform_red_right', 'assets/platform_red_32x32_right.png');
     this.load.image('star', 'assets/star.png');
@@ -36,7 +37,7 @@ function preload () {
     );
 }
 
-var platformPositions = [[12, 16, 8],
+var platformPositions = [[12, 17, 10],
                          [3, 6, 4],
                          [2, 7, 11],
                          [15, 22, 4],
@@ -122,8 +123,8 @@ function create () {
 
     stars = this.physics.add.group({
         key: 'star',
-        repeat: 11,
-        setXY: { x: 60, y: 0, stepX: 60 }
+        repeat: 14,
+        setXY: { x: 60, y: 0, stepX: 50 }
     });
 
     stars.children.iterate(function (child) {
@@ -180,7 +181,7 @@ function hitBomb (player, bomb)
 {
     this.physics.pause();
 
-    player.setTint(0xff0000);
+    player.setTint(0xFFFF00);
 
     player.anims.play('turn');
 
@@ -200,7 +201,7 @@ function update () {
                     player.setVelocityX(-160);
                     player.anims.play('left', true);
                 } else {
-                    player.setVelocityX(-300);
+                    player.setVelocityX(-320);
                     player.anims.play('left_fast', true);
                 }
             }
@@ -209,7 +210,7 @@ function update () {
                     player.setVelocityX(160);
                     player.anims.play('right', true);
                 } else {
-                    player.setVelocityX(300);
+                    player.setVelocityX(320);
                     player.anims.play('right_fast', true);
                 }
             }

@@ -48,10 +48,11 @@ if __name__ == "__main__":
     # put_commands_whole += get_next_put_commands(folders_dict["p5_playground_1"])
     
     # put_commands_whole += get_next_put_commands(folders_dict["sequences_plotter"])
-    put_commands_whole += get_next_put_commands(folders_dict["libraries"])
-    put_commands_whole += get_next_put_commands(folders_dict["light_off_game"])
-    put_commands_whole += get_next_put_commands(folders_dict["moving_light_off_game"])
-    put_commands_whole += get_next_put_commands(folders_dict["moving_light_off_game_p5"])
+#     put_commands_whole += get_next_put_commands(folders_dict["libraries"])
+#     put_commands_whole += get_next_put_commands(folders_dict["light_off_game"])
+    put_commands_whole += get_next_put_commands(folders_dict["binary_automatons"])
+#     put_commands_whole += get_next_put_commands(folders_dict["moving_light_off_game"])
+#     put_commands_whole += get_next_put_commands(folders_dict["moving_light_off_game_p5"])
 
     # put_commands_whole += get_next_put_commands(folders_dict["startbootstrap_clean_blog_gh_pages"])
 
