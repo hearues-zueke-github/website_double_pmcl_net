@@ -79,10 +79,10 @@ function test_print_2() {
     console.log("YES! BTN is working TOO!");
 }
 
-btn_fields['btn_field_1'].btn_field_array[1][2].click(test_print);
-btn_fields['btn_field_1'].btn_field_array[2][4].click(async function() {
-    set_random_pixel(10000);
-});
+// btn_fields['btn_field_1'].btn_field_array[1][2].click(test_print);
+// btn_fields['btn_field_1'].btn_field_array[2][4].click(async function() {
+//     set_random_pixel(10000);
+// });
 
 btn_fields['btn_field_2'].btn_field_array[0][0].click(test_print_2);
 
@@ -92,5 +92,49 @@ var btn_field_array = obj.btn_field_array;
 btn_field_array[0][0].append('Start');
 btn_field_array[1][0].append('Stop');
 
-btn_field_array[1][0].get(0).onclick = function(){console.log("TEST12313213123!")};
-btn_field_array[1][0].get(0).oncontextmenu = ()=>{console.log("GET!")};;
+// btn_field_array[1][0].get(0).onclick = function(){console.log("TEST12313213123!")};
+// btn_field_array[1][0].get(0).oncontextmenu = ()=>{console.log("GET!")};;
+
+
+var btn_colors = [
+    '#10a310',
+    '#1212b6',
+    '#c20b0b',
+];
+var obj = btn_fields['btn_field_1'];
+var btn_field_array = obj.btn_field_array;
+var btn_field_array_vals = [];
+for (var row = 0; row < btn_field_array.length; ++row) {
+    var btn_field_array_row = btn_field_array[row];
+    var btn_field_array_vals_row = [];
+    for (var col = 0; col < btn_field_array_row.length; ++col) {
+        var $btn = btn_field_array_row[col];
+        var btn = $btn.get(0);
+
+        var obj = {
+            row: row, col: col, state: 1
+        };
+        btn_field_array_vals_row.push(obj);
+
+        (function(row, col, obj, btn) {
+            // console.log("row: "+row+", col: "+col);
+            btn.onclick = () => {
+                if (obj.state == 0) {
+                    return;
+                }
+                obj.state--;
+                btn.style.backgroundColor = btn_colors[obj.state];
+                // console.log("onclick, row: " + row + ", col: " + col + ", state: " + obj.state);
+            };
+            btn.oncontextmenu = () => {
+                if (obj.state == 2) {
+                    return;
+                }
+                obj.state++;
+                btn.style.backgroundColor = btn_colors[obj.state];
+            };
+            btn.style.backgroundColor = btn_colors[1];
+        }(row, col, obj, btn));
+    }
+    btn_field_array_vals.push(btn_field_array_vals_row);
+}

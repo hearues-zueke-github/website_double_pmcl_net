@@ -42,6 +42,7 @@ folders_dict = {
         "next_folder": "libraries",
         "file_names": [
             "jquery.min.js",
+            "jquery-3.5.1.min.js",
         ]
     },
     "sequences_plotter": {
