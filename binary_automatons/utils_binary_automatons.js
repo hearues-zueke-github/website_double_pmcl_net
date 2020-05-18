@@ -1,0 +1,15 @@
+function copyCSSProperties(node, clonedNode) {
+  const styles = window.getComputedStyle(node);
+  if (styles.cssText !== '') {
+    clonedNode.style.cssText = styles.cssText;
+  } else {
+    const cssText = Object.values(styles).reduce(
+      (css, propertyName) =>
+        `${css}${propertyName}:${styles.getPropertyValue(
+          propertyName
+        )};`
+    );
+
+    clonedNode.style.cssText = cssText
+  }
+}
