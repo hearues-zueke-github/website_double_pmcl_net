@@ -1,20 +1,26 @@
 .btn-1 {
-    height: 50px;
-    width: 50px;
+    height: 20px;
+    width: 20px;
+}
+
+.btn-1:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 
 .btn-group-row-1 button {
     background-color: #4CAF50; /* Green background */
-    border: 1px solid green; /* Green border */
+    border: 0px; /* Green border */
+    /*border-bottom: 1px solid green; !* Green border *!*/
     color: white; /* White text */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
-    margin-right: 2px;
+    margin-right: 1px;
 }
 
 .btn-group-row-1 button:first-child {
-    margin-left: 2px;
+    margin-left: 1px;
 }
 
 /* Clear floats (clearfix hack) */
@@ -32,7 +38,7 @@
 
 .btn-group-1 div {
     background-color: #904ed0; /* Green background */
-    padding-bottom: 2px;
+    padding-bottom: 1px;
     display: block; /* Make the buttons appear below each other */
 }
 
@@ -45,7 +51,7 @@
 }
 
 .btn-group-1 div:first-child {
-    padding-top: 2px;
+    padding-top: 1px;
 }
 
 /* Add a background color on hover */
